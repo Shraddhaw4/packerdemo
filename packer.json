@@ -1,0 +1,42 @@
+{
+    "variables": {
+      "aws_access_key": "{{env 'AWS_ACCESS_KEY_ID'}}",
+      "aws_secret_key": "{{env 'AWS_SECRET_ACCESS_KEY'}}"
+    },
+    "builders": [
+        {
+          "access_key": "{{user `aws_access_key`}}",
+          "ami_name": "Test-AMI-{{timestamp}}",
+          "instance_type": "t2.micro",
+          "region": "ap-south-1",
+          "secret_key": "{{user `aws_secret_key`}}",
+          "ami_users": "529469281996",
+          "source_ami": "ami-0b08bfc6ff7069aff",
+          "ssh_username": "ec2-user",
+          "type": "amazon-ebs",
+          "tags": {
+            "Name": "packer-image",
+            "Environment": "dev"
+          },
+          "vpc_id": "vpc-fd8e7796",
+          "subnet_id": "subnet-4f52b524",
+          "ssh_pty": "true",
+          "ami_block_device_mappings": [
+            {
+              "device_name": "/dev/sda1",
+              "volume_size": 8,
+              "volume_type": "gp2",
+              "delete_on_termination": true
+            }
+          ]
+        }
+      ],
+      "provisioners": [
+    
+        {
+       "type": "shell",
+       "scripts": "packages.sh"
+     }
+     ]
+}
+
