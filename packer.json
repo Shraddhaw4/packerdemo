@@ -1,7 +1,7 @@
 {
     "variables": {
-      "aws_access_key": "{{env 'AWS_ACCESS_KEY_ID'}}",
-      "aws_secret_key": "{{env 'AWS_SECRET_ACCESS_KEY'}}"
+      "aws_access_key": "",
+      "aws_secret_key": ""
     },
     "builders": [
         {
@@ -32,11 +32,22 @@
         }
       ],
       "provisioners": [
-    
+        {
+            "type": "powershell",
+            "inline": [
+                "Set-AWSCredentials -AccessKey {{user `aws_access_key`}} -SecretKey {{user `aws_secret_key`}} -StoreAs aws-creds"
+            ]
+        },
         {
        "type": "shell",
        "scripts": "packages.sh"
-     }
+     },
+        {
+            "type": "powershell",
+            "inline": [
+                "Remove-AWSCredentialProfile -ProfileName aws-creds -Confirm:$false"
+            ]
+        }
      ]
 }
 
