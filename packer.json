@@ -5,11 +5,11 @@
     },
     "builders": [
         {
-          "access_key": "{{user `aws_access_key`}}",
+          "access_key": "{{user 'aws_access_key'}}",
           "ami_name": "Test-AMI-{{timestamp}}",
           "instance_type": "t2.micro",
           "region": "ap-south-1",
-          "secret_key": "{{user `aws_secret_key`}}",
+          "secret_key": "{{user 'aws_secret_key'}}",
           "ami_users": "529469281996",
           "source_ami": "ami-0b08bfc6ff7069aff",
           "ssh_username": "ec2-user",
