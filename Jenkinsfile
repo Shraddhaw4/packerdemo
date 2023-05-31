@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent  any
 
     stages {
         stage('Build Image') {
@@ -13,7 +13,6 @@ pipeline {
                     
                         // Run Packer build command
                         sh("packer build -var 'access_key=${AWS_ACCESS_KEY_ID}' -var 'secret_key=${AWS_SECRET_ACCESS_KEY}' packer.json")
-                    }
                 }
             }
         }
