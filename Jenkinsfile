@@ -23,11 +23,9 @@ pipeline {
             }
         }
         stage('Build Image') {
-            
             steps {
                 sh 'pwd;cd packer/ ; packer validate packer.json'
                 }
             }
         }
     }
-}
