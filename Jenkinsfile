@@ -25,7 +25,7 @@ pipeline {
                     credentialsId: 'AWS_CREDS',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                     ]])
-                sh 'pwd;cd packer/ ; packer validate packer.json'
+                { sh 'pwd;cd packer/ ; packer validate packer.json' }
             }
         }
         // stage('Build Image') {
