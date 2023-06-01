@@ -35,7 +35,7 @@
         {
             "type": "powershell",
             "inline": [
-                "Set-AWSCredentials -AccessKey {{user `aws_access_key`}} -SecretKey {{user `aws_secret_key`}} -StoreAs aws-creds"
+                "Set-AWSCredentials -AccessKey {{user 'aws_access_key'}} -SecretKey {{user 'aws_secret_key'}} -StoreAs aws-creds"
             ]
         },
         {
