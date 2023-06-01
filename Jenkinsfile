@@ -33,7 +33,7 @@ pipeline {
                  withCredentials([[
                  $class: 'AmazonWebServicesCredentialsBinding',
                  accessKeyVariable: 'AWS_ACCESS_KEY_ID', // dev credentials
-                 credentialsId: 'AWS_CRED',
+                 credentialsId: 'AWS_CREDS',
                  secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                  ]]){
                        sh 'pwd;cd packer/ ;packer build packer.json'
