@@ -35,13 +35,7 @@
         {
           "type": "shell",
           "scripts": "packages.sh"
-        },
-        {
-          "type": "powershell",
-            "inline": [
-                "Remove-AWSCredentialProfile -ProfileName aws-creds -Confirm:$false"
-            ]
-        }
+        }    
      ]
 }
 
