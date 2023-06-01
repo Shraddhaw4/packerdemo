@@ -33,17 +33,11 @@
       ],
       "provisioners": [
         {
-            "type": "powershell",
-            "inline": [
-                "Set-AWSCredentials -AccessKey {{user 'aws_access_key'}} -SecretKey {{user 'aws_secret_key'}} -StoreAs aws-creds"
-            ]
+          "type": "shell",
+          "scripts": "packages.sh"
         },
         {
-       "type": "shell",
-       "scripts": "packages.sh"
-     },
-        {
-            "type": "powershell",
+          "type": "powershell",
             "inline": [
                 "Remove-AWSCredentialProfile -ProfileName aws-creds -Confirm:$false"
             ]
