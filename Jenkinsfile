@@ -5,7 +5,7 @@ pipeline {
     //     AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
     //         }
 
-    agent  any
+    agent {label 'packer'}
     stages {
         stage('checkout') {
             steps {
@@ -22,7 +22,7 @@ pipeline {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID', // dev credentials
-                    credentialsId: 'AWS_CREDS',
+                    credentialsId: 'AWS_credentials',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                     ]])
                 { sh 'pwd;cd packer/ ; packer validate packer.json' }
@@ -33,7 +33,7 @@ pipeline {
                  withCredentials([[
                  $class: 'AmazonWebServicesCredentialsBinding',
                  accessKeyVariable: 'AWS_ACCESS_KEY_ID', // dev credentials
-                 credentialsId: 'AWS_CREDS',
+                 credentialsId: 'AWS_credentials',
                  secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                  ]]){
                        sh 'pwd;cd packer/ ;packer build packer.json'
