@@ -11,7 +11,7 @@
           "region": "ap-south-1",
          
           "ami_users": "529469281996",
-          "source_ami": "ami-0b08bfc6ff7069aff",
+          "source_ami": "ami-02a2af70a66af6dfb",
           "ssh_username": "ec2-user",
           "type": "amazon-ebs",
           "tags": {
